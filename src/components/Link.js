@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { setVisibilityFilter } from '../actions/actions';
 
 const Link = ({ children, active, onClick }) => {
-  return <button onClick={onClick}>{children}</button>;
+  return (
+    <button disabled={active} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -12,7 +16,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => {
-    console.log('click');
     return dispatch(setVisibilityFilter(ownProps.filter));
   },
 });
